@@ -1,6 +1,6 @@
 {
   "name": "@foxmono/server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,7 +11,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@foxmono/common": "^1.0.1",
+    "@foxmono/common": "^1.0.2",
     "@types/node": "^17.0.2",
     "typescript": "^4.5.4"
   }
