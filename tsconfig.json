@@ -13,12 +13,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "incremental": false,
+
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
   },
-  "exclude": [
-    "**/node_modules",
-    "**/.*/",
-    "**/jest.config.js",
-    "**/.build"
-  ],
+  "exclude": ["**/node_modules", "**/.*/", "**/jest.config.js", "**/.build"]
 }

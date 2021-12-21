@@ -5,5 +5,13 @@
   ],
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "diff": {
+      "ignore": [
+        "**/*.md",
+        "**/*.tsbuildinfo"
+      ]
+    }
+  }
 }
