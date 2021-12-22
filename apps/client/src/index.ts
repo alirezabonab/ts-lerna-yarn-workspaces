@@ -1,3 +1,3 @@
 import { add } from '@foxmono/common';
 
-console.log(add(4, 2));
+console.log('this is client and sum of 3 + 2 becomes: ', add(3, 2));
