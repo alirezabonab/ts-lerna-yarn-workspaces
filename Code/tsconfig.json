@@ -17,7 +17,13 @@
     "incremental": false,
 
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "exclude": ["**/node_modules", "**/.*/", "**/jest.config.js", "**/.build"]
+  "exclude": [
+    "**/node_modules",
+    "**/.*/",
+    "**/jest.config.js",
+    "**/.build",
+    "**/dist"
+  ]
 }

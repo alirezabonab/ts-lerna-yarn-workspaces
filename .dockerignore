@@ -1,0 +1,5 @@
+**/node_modules
+**/dist
+**/files
+**/coverage
+**/.DS_Store

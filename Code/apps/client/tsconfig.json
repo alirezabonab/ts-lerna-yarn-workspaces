@@ -9,5 +9,5 @@
     "declaration": true
   },
   "include": ["src"],
-  "references": [{ "path": "../../packages/common" }]
+  "references": [{ "path": "../../libs/common" }]
 }

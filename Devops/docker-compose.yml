@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  server:
+    container_name: server
+    build:
+      context: ..
+      dockerfile: ./devops/Dockerfile
+      args:
+        - BUILD_CONTEXT=server
+    ports:
+      - '8080:80'
+    volumes:
+      - '../Code/libs:/src/Code/libs'
+      - '../Code/apps/server:/src/Code/apps/server'
+  client:
+    container_name: client
+    build:
+      context: ..
+      dockerfile: ./devops/Dockerfile
+      args:
+        - BUILD_CONTEXT=client
+    ports:
+      - '8081:80'
+    volumes:
+      - '../Code/libs:/src/Code/libs'
+      - '../Code/apps/client:/src/Code/apps/client'
