@@ -1,0 +1,7 @@
+- [x]  setup yarn workspaces
+- [x] setup lerna
+- [ ] setup local development environment
+- [ ] setup CI/CD
+  - [ ] publish npm packages
+  - [ ] create docker images
+  - [ ] publish docker images
