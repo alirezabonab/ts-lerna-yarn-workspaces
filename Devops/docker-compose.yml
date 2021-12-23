@@ -1,11 +1,18 @@
-version: '3'
+version: '3.4'
 
 services:
+  libs:
+    container_name: libs
+    build:
+      context: ..
+      dockerfile: ./Devops/local/libs/Dockerfile
+    volumes:
+      - '../Code/libs:/src/Code/libs'
   server:
     container_name: server
     build:
       context: ..
-      dockerfile: ./devops/Dockerfile
+      dockerfile: ./Devops/local/apps/Dockerfile
       args:
         - BUILD_CONTEXT=server
     ports:
@@ -13,11 +20,12 @@ services:
     volumes:
       - '../Code/libs:/src/Code/libs'
       - '../Code/apps/server:/src/Code/apps/server'
+    restart: always
   client:
     container_name: client
     build:
       context: ..
-      dockerfile: ./devops/Dockerfile
+      dockerfile: ./Devops/local/apps/Dockerfile
       args:
         - BUILD_CONTEXT=client
     ports:
@@ -25,3 +33,4 @@ services:
     volumes:
       - '../Code/libs:/src/Code/libs'
       - '../Code/apps/client:/src/Code/apps/client'
+    restart: always

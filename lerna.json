@@ -1,7 +1,7 @@
 {
   "packages": [
-    "Code/packages/*",
-    "Code/apps/*"
+    "Code/libs/**",
+    "Code/apps/**"
   ],
   "version": "independent",
   "npmClient": "yarn",
