@@ -8,5 +8,13 @@
   ],
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "dev:up": "docker-compose -f ./Devops/docker-compose.yml up -d",
+    "dev:down": "docker-compose -f ./Devops/docker-compose.yml down",
+    "dev:logs": "docker-compose -f ./Devops/docker-compose.yml logs -f",
+    "dev:logs:server": "docker-compose -f ./Devops/docker-compose.yml logs -f server",
+    "dev:logs:client": "docker-compose -f ./Devops/docker-compose.yml logs -f",
+    "dev:logs:libs": "docker-compose -f ./Devops/docker-compose.yml logs -f"
   }
 }
