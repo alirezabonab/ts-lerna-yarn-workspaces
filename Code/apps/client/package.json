@@ -1,11 +1,6 @@
 {
   "name": "@foxmono/client",
   "version": "1.0.2",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "private": true,
   "scripts": {
     "build": "tsc",

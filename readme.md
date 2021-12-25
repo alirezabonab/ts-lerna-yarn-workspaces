@@ -1,13 +1,12 @@
 - [x]  setup yarn workspaces
 - [x] setup lerna
 - [ ] setup local development environment
-  - [ ] Init Project
-    - [ ] install dependencies
-    - [ ] add knonw_hosts
   - [ ] Dev Environment
-    - [ ] start dev env
-    - [ ] stop dev env
-    - [ ] watch logs
+    - [x] service to build libs with hot realoading 
+    - [x] start dev env
+    - [x] stop dev env
+    - [x] watch logs
+    - [ ] add knonw_hosts
 - [ ] setup CI/CD
   - [ ] publish npm packages
   - [ ] create docker images
