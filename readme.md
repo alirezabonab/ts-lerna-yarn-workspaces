@@ -6,7 +6,8 @@
     - [x] start dev env
     - [x] stop dev env
     - [x] watch logs
-    - [ ] add knonw_hosts
+    - [x] add knonw_hosts
+    - [ ] setup root level eslint
 - [ ] setup CI/CD
   - [ ] publish npm packages
   - [ ] create docker images
