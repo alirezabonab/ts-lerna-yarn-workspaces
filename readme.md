@@ -8,6 +8,7 @@
     - [x] watch logs
     - [x] add knonw_hosts
     - [ ] setup root level eslint
+    - [ ] add a react app and vue app to test the typescript bindings
 - [ ] setup CI/CD
   - [ ] publish npm packages
   - [ ] create docker images
