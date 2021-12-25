@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "Code/apps/**",
-    "Code/libs/**"
+    "code/apps/**",
+    "code/libs/**"
   ],
   "devDependencies": {
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "dev:up": "docker-compose -f ./Devops/docker-compose.yml up -d",
-    "dev:down": "docker-compose -f ./Devops/docker-compose.yml down",
-    "dev:logs": "docker-compose -f ./Devops/docker-compose.yml logs -f",
-    "dev:logs:server": "docker-compose -f ./Devops/docker-compose.yml logs -f server",
-    "dev:logs:client": "docker-compose -f ./Devops/docker-compose.yml logs -f",
-    "dev:logs:libs": "docker-compose -f ./Devops/docker-compose.yml logs -f"
+    "dev:up": "docker-compose -f ./devops/docker-compose.yml up -d",
+    "dev:down": "docker-compose -f ./devops/docker-compose.yml down",
+    "dev:logs": "docker-compose -f ./devops/docker-compose.yml logs -f",
+    "dev:logs:server": "docker-compose -f ./devops/docker-compose.yml logs -f server",
+    "dev:logs:client": "docker-compose -f ./devops/docker-compose.yml logs -f client",
+    "dev:logs:libs": "docker-compose -f ./devops/docker-compose.yml logs -f libs"
   }
 }

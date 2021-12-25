@@ -1,53 +1,51 @@
 version: '3.4'
 
 services:
+  # reverse proxy
   reverse-proxy:
-    # The official v2 Traefik docker image
     image: traefik:v2.5
-    # Enables the web UI and tells Traefik to listen to docker
     command: --api.insecure=true --providers.docker
     ports:
-      # The HTTP port
       - '80:80'
-      # The Web UI (enabled by --api.insecure=true)
       - '8080:8080'
     volumes:
-      # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
   whoami:
-    # A container that exposes an API to show its IP address
     image: traefik/whoami
     scale: 2
     labels:
       - 'traefik.http.routers.whoami.rule=Host(`whoami.localhost`)'
+  # compiling libs in watch mode
   libs:
     container_name: libs
     build:
       context: ..
-      dockerfile: ./Devops/local/libs/Dockerfile
+      dockerfile: ./devops/local/libs/Dockerfile
     volumes:
-      - '../Code/libs:/src/Code/libs'
+      - '../code/libs:/src/code/libs'
+  # app : server
   server:
     container_name: server
     build:
       context: ..
-      dockerfile: ./Devops/local/apps/Dockerfile
+      dockerfile: ./devops/local/apps/Dockerfile
       args:
         - BUILD_CONTEXT=server
     volumes:
-      - '../Code/libs:/src/Code/libs'
-      - '../Code/apps/server:/src/Code/apps/server'
+      - '../code/libs:/src/code/libs'
+      - '../code/apps/server:/src/code/apps/server'
     restart: always
     labels:
       - 'traefik.http.routers.server.rule=Host(`server.localhost`)'
+  # app : client
   client:
     container_name: client
     build:
       context: ..
-      dockerfile: ./Devops/local/apps/Dockerfile
+      dockerfile: ./devops/local/apps/Dockerfile
       args:
         - BUILD_CONTEXT=client
     volumes:
-      - '../Code/libs:/src/Code/libs'
-      - '../Code/apps/client:/src/Code/apps/client'
+      - '../code/libs:/src/code/libs'
+      - '../code/apps/client:/src/code/apps/client'
     restart: always

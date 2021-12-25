@@ -9,18 +9,17 @@ WORKDIR /src
 
 RUN yarn global add lerna
 
-COPY ./Code/tsconfig.json ./Code/tsconfig.json
+COPY ./code/tsconfig.json ./code/tsconfig.json
 COPY lerna.json .
 COPY package.json .
 COPY yarn.lock .
 
-COPY ./Code/apps/$BUILD_CONTEXT/package.json Code/apps/$BUILD_CONTEXT/package.json
+COPY ./code/apps/$BUILD_CONTEXT/package.json code/apps/$BUILD_CONTEXT/package.json
 
-COPY ./Code/libs Code/libs
+COPY ./code/libs code/libs
 
 RUN yarn install
 
-COPY ./Code/apps/$BUILD_CONTEXT Code/apps/$BUILD_CONTEXT
+COPY ./code/apps/$BUILD_CONTEXT code/apps/$BUILD_CONTEXT
 
 CMD lerna run dev --scope @foxmono/${BUILD_CONTEXT} --stream
-# CMD yarn workspace @foxmono/${BUILD_CONTEXT} dev

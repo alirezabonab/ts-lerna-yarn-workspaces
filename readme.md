@@ -9,6 +9,8 @@
     - [x] add knonw_hosts
     - [ ] setup root level eslint
     - [ ] add a react app and vue app to test the typescript bindings
+    - [ ] add restart policy to apps when libs recompiles
+    - [ ] add https supprt
 - [ ] setup CI/CD
   - [ ] publish npm packages
   - [ ] create docker images
@@ -21,7 +23,7 @@ Advanced Stuff
 
 ---
 **What I have done:**  
-The file tree is good, every project lives under Code folder either in apps or libs.  
+The file tree is good, every project lives under code folder either in apps or libs.  
 libs contains the shared code.  
 There is only one Dockerfile for all projects and through BUILD_CONTEXT argument it identifies the app to install  
 The `docker-compose` file holds all apps and mounts the libs and target app folder into the docker container in order to have hot reloading  
