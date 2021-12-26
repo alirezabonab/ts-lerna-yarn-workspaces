@@ -7,14 +7,22 @@
     "code/libs/**"
   ],
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.5.1"
   },
   "scripts": {
-    "dev:up": "docker-compose -f ./devops/docker-compose.yml up -d",
-    "dev:down": "docker-compose -f ./devops/docker-compose.yml down",
-    "dev:logs": "docker-compose -f ./devops/docker-compose.yml logs -f",
-    "dev:logs:server": "docker-compose -f ./devops/docker-compose.yml logs -f server",
-    "dev:logs:client": "docker-compose -f ./devops/docker-compose.yml logs -f client",
-    "dev:logs:libs": "docker-compose -f ./devops/docker-compose.yml logs -f libs"
+    "services:up": "docker-compose -f ./devops/docker-compose.yml up -d",
+    "services:down": "docker-compose -f ./devops/docker-compose.yml down",
+    "services:logs": "docker-compose -f ./devops/docker-compose.yml logs -f",
+    "services:logs:server": "docker-compose -f ./devops/docker-compose.yml logs -f server",
+    "services:logs:client": "docker-compose -f ./devops/docker-compose.yml logs -f client",
+    "services:logs:libs": "docker-compose -f ./devops/docker-compose.yml logs -f libs",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --ext"
   }
 }
