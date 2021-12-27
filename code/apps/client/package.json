@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon ./src/index.ts"
+    "dev:watch": "nodemon ./src/index.ts"
   },
   "dependencies": {
     "@foxmono/common": "^1.0.2",

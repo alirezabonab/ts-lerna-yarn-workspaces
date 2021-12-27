@@ -17,7 +17,13 @@
     "incremental": false,
 
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    "declaration": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "**/node_modules",

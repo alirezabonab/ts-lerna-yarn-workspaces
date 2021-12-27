@@ -8,7 +8,7 @@
   ],
   "private": true,
   "scripts": {
-    "dev": "tsc -w"
+    "dev:watch": "tsc -w"
   },
   "dependencies": {
     "@types/node": "^17.0.2",
