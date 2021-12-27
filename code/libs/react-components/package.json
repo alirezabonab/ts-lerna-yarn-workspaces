@@ -1,0 +1,28 @@
+{
+  "name": "@foxmono/react-component-library",
+  "version": "1.0.0",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "/lib"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepack": "yarn build",
+    "build": "rollup -c",
+    "dev:watch": "rollup -cw"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "react": "^17.0.2",
+    "rollup": "^2.62.0",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "typescript": "^4.5.4"
+  }
+}
