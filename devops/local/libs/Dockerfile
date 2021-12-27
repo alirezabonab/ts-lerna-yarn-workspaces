@@ -12,7 +12,7 @@ COPY yarn.lock .
 
 # libs pacakge.json files
 COPY ./code/libs/common/package.json code/libs/common/package.json
-COPY ./code/libs/react-components/package.json code/libs/react-components/package.json
+COPY ./code/libs/react-components-library/package.json code/libs/react-components-library/package.json
 
 RUN yarn install
 

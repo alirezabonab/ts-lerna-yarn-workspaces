@@ -4,6 +4,8 @@ services:
   # app : server
   server:
     container_name: server
+    security_opt:
+      - no-new-privileges:true
     build:
       context: ..
       dockerfile: ./devops/local/apps/Dockerfile
@@ -14,10 +16,16 @@ services:
       - '../code/apps/server:/src/code/apps/server'
     restart: always
     labels:
-      - 'traefik.http.routers.server.rule=Host(`server.localhost`)'
+      - 'traefik.http.routers.server.rule=Host(`server.foxmono.localhost`)'
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.server.tls=true'
+    networks:
+      - proxy
   # app : admin-dashboard
   admin-dashboard:
     container_name: admin-dashboard
+    security_opt:
+      - no-new-privileges:true
     build:
       context: ..
       dockerfile: ./devops/local/apps/Dockerfile
@@ -28,7 +36,11 @@ services:
       - '../code/apps/admin-dashboard:/src/code/apps/admin-dashboard'
     restart: always
     labels:
-      - 'traefik.http.routers.admin.rule=Host(`admin.localhost`)'
+      - 'traefik.http.routers.admin.rule=Host(`admin.foxmono.localhost`)'
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.admin.tls=true'
+    networks:
+      - proxy
   # app : client
   client:
     container_name: client
@@ -41,3 +53,9 @@ services:
       - '../code/libs:/src/code/libs'
       - '../code/apps/client:/src/code/apps/client'
     restart: always
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

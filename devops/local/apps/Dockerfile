@@ -17,7 +17,7 @@ COPY yarn.lock .
 
 # libs pacakge.json files
 COPY ./code/libs/common/package.json code/libs/common/package.json
-COPY ./code/libs/react-components/package.json code/libs/react-components/package.json
+COPY ./code/libs/react-components-library/package.json code/libs/react-components-library/package.json
 
 # target app package.json file
 COPY ./code/apps/$BUILD_CONTEXT/package.json code/apps/$BUILD_CONTEXT/package.json

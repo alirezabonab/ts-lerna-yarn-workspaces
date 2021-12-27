@@ -8,9 +8,9 @@
     - [x] watch logs
     - [x] add knonw_hosts
     - [x] setup root level eslint
-    - [ ] add a react app and vue app to test the typescript bindings
+    - [x] add a react app and vue app to test the typescript bindings
     - [ ] add restart policy to apps when libs recompiles
-    - [ ] add https supprt
+    - [x] add https supprt
 - [ ] setup CI/CD
   - [ ] publish npm packages
   - [ ] create docker images
