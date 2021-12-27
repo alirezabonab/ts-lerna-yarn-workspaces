@@ -4,12 +4,15 @@ WORKDIR /src
 
 RUN yarn global add lerna
 
+# root level configurations
 COPY ./code/tsconfig.json ./code/tsconfig.json
 COPY lerna.json .
 COPY package.json .
 COPY yarn.lock .
 
-COPY ./code/libs code/libs
+# libs pacakge.json files
+COPY ./code/libs/common/package.json code/libs/common/package.json
+COPY ./code/libs/react-components/package.json code/libs/react-components/package.json
 
 RUN yarn install
 

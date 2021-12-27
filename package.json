@@ -16,14 +16,15 @@
     "prettier": "^2.5.1"
   },
   "scripts": {
-    "services:up2": "docker-compose -f ./devops/docker-compose.reverse-proxy.yml -f ./devops/docker-compose.apps.yml -f ./devops/docker-compose.libs.yml up -d",
-    "services:down2": "docker-compose -f ./devops/docker-compose.reverse-proxy.yml -f ./devops/docker-compose.apps.yml -f ./devops/docker-compose.libs.yml down",
-    "services:up": "docker-compose -f ./devops/docker-compose.yml up -d",
-    "services:down": "docker-compose -f ./devops/docker-compose.yml down",
-    "services:logs": "docker-compose -f ./devops/docker-compose.yml logs -f",
-    "services:logs:server": "docker-compose -f ./devops/docker-compose.yml logs -f server",
-    "services:logs:client": "docker-compose -f ./devops/docker-compose.yml logs -f client",
-    "services:logs:libs": "docker-compose -f ./devops/docker-compose.yml logs -f libs",
+    "docker-compose-files": "docker-compose -f ./devops/docker-compose.reverse-proxy.yml -f ./devops/docker-compose.apps.yml -f ./devops/docker-compose.libs.yml",
+    "services:up": "yarn docker-compose-files -- up -d",
+    "services:down": "yarn docker-compose-files -- down",
+    "services:logs": "yarn docker-compose-files -- logs -f",
+    "services:logs:server": "yarn docker-compose-files -- logs -f server",
+    "services:logs:client": "yarn docker-compose-files -- logs -f client",
+    "services:logs:libs": "yarn docker-compose-files -- logs -f libs",
+    "services:logs:react-component-library": "yarn docker-compose-files -- logs -f react-component-library",
+    "services:logs:admin-dashboard": "yarn docker-compose-files -- logs -f admin-dashboard",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --ext"
   }
