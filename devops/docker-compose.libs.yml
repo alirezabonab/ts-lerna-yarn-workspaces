@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  libs:
+    container_name: libs
+    build:
+      context: ..
+      dockerfile: ./devops/local/libs/Dockerfile
+    volumes:
+      - '../code/libs:/src/code/libs'
+    restart: always

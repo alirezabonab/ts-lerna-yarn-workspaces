@@ -7,7 +7,7 @@
     - [x] stop dev env
     - [x] watch logs
     - [x] add knonw_hosts
-    - [ ] setup root level eslint
+    - [x] setup root level eslint
     - [ ] add a react app and vue app to test the typescript bindings
     - [ ] add restart policy to apps when libs recompiles
     - [ ] add https supprt

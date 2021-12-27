@@ -1,31 +1,6 @@
 version: '3.4'
 
 services:
-  # reverse proxy
-  reverse-proxy:
-    image: traefik:v2.5
-    command: --api.insecure=true --providers.docker
-    ports:
-      - '80:80'
-      - '8080:8080'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
-  whoami:
-    image: traefik/whoami
-    scale: 2
-    labels:
-      - 'traefik.http.routers.whoami.rule=Host(`whoami.localhost`)'
-    restart: always
-  # compiling libs in watch mode
-  libs:
-    container_name: libs
-    build:
-      context: ..
-      dockerfile: ./devops/local/libs/Dockerfile
-    volumes:
-      - '../code/libs:/src/code/libs'
-    restart: always
   # app : server
   server:
     container_name: server
@@ -40,6 +15,20 @@ services:
     restart: always
     labels:
       - 'traefik.http.routers.server.rule=Host(`server.localhost`)'
+  # app : admin-dashboard
+  admin-dashboard:
+    container_name: admin-dashboard
+    build:
+      context: ..
+      dockerfile: ./devops/local/apps/Dockerfile
+      args:
+        - BUILD_CONTEXT=admin-dashboard
+    volumes:
+      - '../code/libs:/src/code/libs'
+      - '../code/apps/admin-dashboard:/src/code/apps/admin-dashboard'
+    restart: always
+    labels:
+      - 'traefik.http.routers.admin.rule=Host(`admin.localhost`)'
   # app : client
   client:
     container_name: client

@@ -13,4 +13,4 @@ COPY ./code/libs code/libs
 
 RUN yarn install
 
-CMD lerna run dev --stream
+CMD lerna run dev:watch --stream

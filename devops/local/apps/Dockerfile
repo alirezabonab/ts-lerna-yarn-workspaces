@@ -22,4 +22,4 @@ RUN yarn install
 
 COPY ./code/apps/$BUILD_CONTEXT code/apps/$BUILD_CONTEXT
 
-CMD lerna run dev --scope @foxmono/${BUILD_CONTEXT} --stream
+CMD lerna run dev:watch --scope @foxmono/${BUILD_CONTEXT} --stream
