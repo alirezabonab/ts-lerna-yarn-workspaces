@@ -7,7 +7,7 @@ export interface SpecialButtonProps {
 const SpecialButton: React.FC<SpecialButtonProps> = ({ name }) => (
   <button
     style={{
-      borderColor: 'green',
+      borderColor: 'orange',
       borderWidth: 'thick',
       padding: '10px',
       borderRadius: 8,

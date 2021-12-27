@@ -4,11 +4,14 @@
   "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }

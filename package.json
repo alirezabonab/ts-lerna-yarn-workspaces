@@ -12,19 +12,20 @@
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "lerna": "^4.0.0",
     "prettier": "^2.5.1"
   },
   "scripts": {
     "docker-compose-files": "docker-compose -f ./devops/docker-compose.reverse-proxy.yml -f ./devops/docker-compose.apps.yml -f ./devops/docker-compose.libs.yml",
-    "services:up": "yarn docker-compose-files -- up -d",
-    "services:down": "yarn docker-compose-files -- down",
-    "services:logs": "yarn docker-compose-files -- logs -f",
-    "services:logs:server": "yarn docker-compose-files -- logs -f server",
-    "services:logs:client": "yarn docker-compose-files -- logs -f client",
-    "services:logs:libs": "yarn docker-compose-files -- logs -f libs",
-    "services:logs:react-component-library": "yarn docker-compose-files -- logs -f react-component-library",
-    "services:logs:admin-dashboard": "yarn docker-compose-files -- logs -f admin-dashboard",
+    "services:up": "yarn docker-compose-files up -d",
+    "services:down": "yarn docker-compose-files down",
+    "services:logs": "yarn docker-compose-files logs -f",
+    "services:logs:server": "yarn docker-compose-files logs -f server",
+    "services:logs:client": "yarn docker-compose-files logs -f client",
+    "services:logs:libs": "yarn docker-compose-files logs -f libs",
+    "services:logs:react-component-library": "yarn docker-compose-files logs -f react-component-library",
+    "services:logs:admin-dashboard": "yarn docker-compose-files logs -f admin-dashboard",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --ext"
   }
