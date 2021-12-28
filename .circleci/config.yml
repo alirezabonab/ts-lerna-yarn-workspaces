@@ -24,7 +24,7 @@ jobs:
       - run:
           name: add yarn .bin folder to $PATH
           command: |
-            echo 'export PATH=node_modules/.bin:$PATH' >> $BASH_ENV
+            echo 'export PATH=$PWD/node_modules/.bin:$PATH' >> $BASH_ENV
 
       - save_cache:
           paths:
