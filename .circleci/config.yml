@@ -23,7 +23,7 @@ jobs:
 
       - run: echo $PWD/node_modules/.bin
       - run: echo 'export PATH=$PWD/node_modules/.bin:$PATH' >> $BASH_ENV
-      - run: echo $PWD
+      - run: echo $PATH
 
       - save_cache:
           paths:
@@ -45,7 +45,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-          
+
       - run:
           name: print $PATH
           command: echo $PATH
