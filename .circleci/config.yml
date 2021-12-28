@@ -66,12 +66,12 @@ jobs:
       - run: git config --global user.name $GITHUB_USER
 
       - run:
-          name: set $TAG with current latest tag before applying versioning
-          command: echo 'export TAG=`git describe --abbrev=0 --tags `' >> $BASH_ENV
+          name: set $XTAG with current latest tag before applying versioning
+          command: echo 'export XTAG=`git describe --abbrev=0 --tags `' >> $BASH_ENV
 
       - run:
-          name: print $TAG
-          command: echo $TAG
+          name: print $XTAG
+          command: echo $XTAG
 
       - run: yarn ci:version
 
@@ -89,8 +89,8 @@ jobs:
           at: ~/
 
       - run:
-          name: print $TAG
-          command: echo $TAG
+          name: print $XTAG
+          command: echo $XTAG
 
       - run:
           name: Authenticate with registry

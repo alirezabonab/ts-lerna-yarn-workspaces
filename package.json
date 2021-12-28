@@ -24,8 +24,8 @@
     "ci:lint": "eslint . --ext .ts",
     "ci:test": "lerna run ci:test",
     "ci:version": "lerna version --conventional-commits --yes",
-    "ci:build": "echo $TAG && lerna run ci:build --since $TAG",
-    "ci:deploy": "lerna run ci:deploy --since $TAG",
+    "ci:build": "echo $XTAG && lerna run ci:build --since $XTAG",
+    "ci:deploy": "lerna run ci:deploy --since $XTAG",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --ext"
   }
