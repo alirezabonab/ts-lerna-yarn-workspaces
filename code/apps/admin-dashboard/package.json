@@ -1,9 +1,9 @@
 {
   "name": "@foxmono/admin-dashboard",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "dependencies": {
-    "@foxmono/common": "^1.0.4",
+    "@foxmono/common": "^1.0.5",
     "@foxmono/react-component-library": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
