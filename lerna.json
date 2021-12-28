@@ -1,17 +1,16 @@
 {
-  "packages": [
-    "code/libs/**",
-    "code/apps/**"
-  ],
+  "packages": ["code/libs/**", "code/apps/**"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "diff": {
-      "ignore": [
-        "**/*.md",
-        "**/*.tsbuildinfo"
-      ]
+      "ignore": ["**/*.md", "**/*.tsbuildinfo"]
+    },
+    "version": {
+      "conventionalCommits": true,
+      "yes": true,
+      "message": "chore(release): publish %s [skip ci]"
     }
   }
 }
