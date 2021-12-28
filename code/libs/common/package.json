@@ -8,8 +8,11 @@
   ],
   "private": true,
   "scripts": {
+    "dev:watch": "tsc -w",
     "echo": "echo @foxmono/common",
-    "dev:watch": "tsc -w"
+    "ci:test": "echo testing--@foxmono/common",
+    "ci:build": "echo building--@foxmono/common",
+    "ci:deploy": "echo deploy--@foxmono/commmon"
   },
   "dependencies": {
     "@types/node": "^17.0.2",

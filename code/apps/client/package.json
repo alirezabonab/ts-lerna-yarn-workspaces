@@ -5,7 +5,10 @@
   "scripts": {
     "build": "tsc",
     "dev:watch": "nodemon ./src/index.ts",
-    "echo": "echo @foxmono/client"
+    "echo": "echo @foxmono/client",
+    "ci:test": "echo testing--@foxmono/client",
+    "ci:build": "echo building--@foxmono/client",
+    "ci:deploy": "echo deploy--@foxmono/client"
   },
   "dependencies": {
     "@foxmono/common": "^1.0.5",

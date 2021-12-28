@@ -13,7 +13,10 @@
     "prepack": "yarn build",
     "build": "rollup -c",
     "dev:watch": "rollup -cw",
-    "echo": "echo @foxmono/react-component-library"
+    "echo": "echo @foxmono/react-component-library",
+    "ci:test": "echo testing--@foxmono/eact-component-library",
+    "ci:build": "echo building--@foxmono/eact-component-library",
+    "ci:deploy": "echo deploy--@foxmono/eact-component-library"
   },
   "peerDependencies": {
     "react": "^17.0.2",

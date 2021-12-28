@@ -1,0 +1,115 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:14.15.3
+
+jobs:
+  prepare:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - run: git fetch --all --tags
+
+      - restore_cache:
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+
+      - run: yarn install --freeze-lockfile
+
+      - save_cache:
+          paths:
+            - node_modules
+            - code/apps/admin-dashboard/node_modules
+            - code/apps/server/node_modules
+            - code/apps/client/node_modules
+            - code/libs/common/node_modules
+            - code/libs/react-components-library/node_modules
+            # *** add/remove item when a project is added or removed
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run: yarn ci:lint
+
+      - run: yarn ci:test
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: set $TAG with current latest tag before applying versioning
+          command: echo 'export TAG=`git describe --abbrev=0 --tags `' >> $BASH_ENV
+
+      - run:
+          name: print $TAG
+          command: echo $TAG
+
+      - run: yarn ci:version
+
+      - run: yarn ci:build
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: print $TAG
+          command: echo $TAG
+
+      - run: git config --global user.email $GITHUB_EMAIL
+      - run: git config --global user.name $GITHUB_USER
+      - run:
+          name: Add github.com to known hosts
+          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+
+      - run: yarn ci:deploy
+
+workflows:
+  version: 2
+  test-build-release:
+    jobs:
+      - prepare
+      - test:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - test
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build

@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev:watch": "nodemon ./bin/www.js",
-    "echo": "echo @foxmono/server"
+    "echo": "echo @foxmono/server",
+    "ci:test": "echo testing--@foxmono/server",
+    "ci:build": "echo building--@foxmono/server",
+    "ci:deploy": "echo deploy--@foxmono/server"
   },
   "dependencies": {
     "@foxmono/common": "^1.0.5",

@@ -21,11 +21,11 @@
     "services:up": "yarn docker-compose-files up -d",
     "services:down": "yarn docker-compose-files down",
     "services:logs": "yarn docker-compose-files logs -f",
-    "services:logs:server": "yarn docker-compose-files logs -f server",
-    "services:logs:client": "yarn docker-compose-files logs -f client",
-    "services:logs:libs": "yarn docker-compose-files logs -f libs",
-    "services:logs:react-component-library": "yarn docker-compose-files logs -f react-component-library",
-    "services:logs:admin-dashboard": "yarn docker-compose-files logs -f admin-dashboard",
+    "ci:lint": "eslint . --ext .ts",
+    "ci:test": "leran run ci:test",
+    "ci:version": "lerna version --conventional-commits --yes",
+    "ci:build": "leran run ci:build --since $TAG",
+    "ci:deploy": "leran run ci:deploy --since $TAG",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --ext"
   }
