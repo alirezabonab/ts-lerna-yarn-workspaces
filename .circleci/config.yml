@@ -19,14 +19,15 @@ jobs:
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
 
-      - run: yarn install --freeze-lockfile
+      - run:
+          name: Add github.com to known hosts
+          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      # - run: echo $PWD/node_modules/.bin
-      # - run: echo 'export PATH=$PWD/node_modules/.bin:$PATH' >> $BASH_ENV
-      # - run: echo $PATH
+      - run: yarn install --freeze-lockfile
 
       - save_cache:
           paths:
+            - ~/.ssh/known_hosts
             - node_modules
             - code/apps/admin-dashboard/node_modules
             - code/apps/server/node_modules
@@ -65,6 +66,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
+      - run: git config --global user.email $GITHUB_EMAIL
+      - run: git config --global user.name $GITHUB_USER
+
       - run:
           name: set $TAG with current latest tag before applying versioning
           command: echo 'export TAG=`git describe --abbrev=0 --tags `' >> $BASH_ENV
@@ -91,12 +95,6 @@ jobs:
       - run:
           name: print $TAG
           command: echo $TAG
-
-      - run: git config --global user.email $GITHUB_EMAIL
-      - run: git config --global user.name $GITHUB_USER
-      - run:
-          name: Add github.com to known hosts
-          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       - run:
           name: Authenticate with registry
