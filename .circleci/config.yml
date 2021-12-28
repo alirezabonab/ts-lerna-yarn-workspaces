@@ -19,10 +19,6 @@ jobs:
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
 
-      - run:
-          name: Add github.com to known hosts
-          command: mkdir ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-
       - run: yarn install --freeze-lockfile
 
       - save_cache:
@@ -38,7 +34,7 @@ jobs:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - persist_to_workspace:
-          root: ~/repo
+          root: .
           paths:
             - .
   test:
