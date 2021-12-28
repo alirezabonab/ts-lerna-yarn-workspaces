@@ -34,14 +34,14 @@ jobs:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - .
   test:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: ~/
 
       - run:
           name: print $PATH
@@ -52,7 +52,7 @@ jobs:
       - run: yarn ci:test
 
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - .
 
@@ -60,7 +60,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: ~/
 
       - run: git config --global user.email $GITHUB_EMAIL
       - run: git config --global user.name $GITHUB_USER
@@ -78,7 +78,7 @@ jobs:
       - run: yarn ci:build
 
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - .
 
@@ -86,7 +86,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: ~/
 
       - run:
           name: print $TAG
