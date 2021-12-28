@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "dev:watch": "react-scripts start",
+    "echo": "echo @foxmono/admin-dashboard",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

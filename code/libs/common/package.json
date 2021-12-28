@@ -8,6 +8,7 @@
   ],
   "private": true,
   "scripts": {
+    "echo": "echo @foxmono/common",
     "dev:watch": "tsc -w"
   },
   "dependencies": {

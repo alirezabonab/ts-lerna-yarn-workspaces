@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev:watch": "nodemon ./bin/www.js"
+    "dev:watch": "nodemon ./bin/www.js",
+    "echo": "echo @foxmono/server"
   },
   "dependencies": {
     "@foxmono/common": "^1.0.2",

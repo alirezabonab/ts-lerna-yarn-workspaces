@@ -12,7 +12,8 @@
   "scripts": {
     "prepack": "yarn build",
     "build": "rollup -c",
-    "dev:watch": "rollup -cw"
+    "dev:watch": "rollup -cw",
+    "echo": "echo @foxmono/react-component-library"
   },
   "peerDependencies": {
     "react": "^17.0.2",
