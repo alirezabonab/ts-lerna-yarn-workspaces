@@ -21,6 +21,11 @@ jobs:
 
       - run: yarn install --freeze-lockfile
 
+      - run:
+          name: add yarn .bin folder to $PATH
+          command: |
+            echo 'export PATH=node_modules/.bin:$PATH' >> $BASH_ENV
+
       - save_cache:
           paths:
             - node_modules
