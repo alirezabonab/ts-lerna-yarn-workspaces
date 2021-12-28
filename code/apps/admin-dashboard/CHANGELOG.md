@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/alireza-bonab/ts-lerna-yarn-workspaces/compare/@foxmono/admin-dashboard@0.1.5...@foxmono/admin-dashboard@0.1.6) (2021-12-28)
+
+**Note:** Version bump only for package @foxmono/admin-dashboard
+
+
+
+
+
 ## [0.1.5](https://github.com/alireza-bonab/ts-lerna-yarn-workspaces/compare/@foxmono/admin-dashboard@0.1.4...@foxmono/admin-dashboard@0.1.5) (2021-12-28)
 
 **Note:** Version bump only for package @foxmono/admin-dashboard
