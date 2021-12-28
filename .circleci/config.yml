@@ -52,7 +52,7 @@ jobs:
       - run: yarn ci:test
 
       - persist_to_workspace:
-          root: ~/repo
+          root: .
           paths:
             - .
 
@@ -78,7 +78,7 @@ jobs:
       - run: yarn ci:build
 
       - persist_to_workspace:
-          root: ~/repo
+          root: .
           paths:
             - .
 
