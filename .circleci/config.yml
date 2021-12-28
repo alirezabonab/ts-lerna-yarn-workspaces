@@ -46,6 +46,10 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+          
+      - run:
+          name: print $PATH
+          command: echo $PATH
 
       - run: yarn ci:lint
 
