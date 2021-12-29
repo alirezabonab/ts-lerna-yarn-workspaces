@@ -42,8 +42,8 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/repo
-            - ~/.ssh
+            - repo
+            - .ssh
   test:
     <<: *defaults
     steps:
@@ -65,8 +65,8 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/repo
-            - ~/.ssh
+            - repo
+            - .ssh
 
   build:
     <<: *defaults
@@ -100,8 +100,8 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/repo
-            - ~/.ssh
+            - repo
+            - .ssh
 
   deploy:
     <<: *defaults
