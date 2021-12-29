@@ -67,7 +67,7 @@ jobs:
 
       - run:
           name: set $XTAG with current latest tag before applying versioning
-          command: echo 'export XTAG=(git describe --abbrev=0 --tags)' >> $BASH_ENV
+          command: echo 'export XTAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
 
       - run:
           name: print $XTAG
