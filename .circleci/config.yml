@@ -39,9 +39,9 @@ jobs:
 
       - run:
           name: persist $TAG
-          command: |
-            mkdir tmp
-            echo $TAG
+          command: >-
+            mkdir tmp &&
+            echo $TAG &&
             echo $TAG >> tmp/current_tag
 
       - persist_to_workspace:
@@ -57,9 +57,9 @@ jobs:
 
       - run:
           name: set $TAG with current latest tag before applying versioning
-          command: |
-            echo $(cat tmp/current_tag)
-            echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
+          command: >-
+            echo $(cat tmp/current_tag) &&
+            echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV &&
             echo $TAG
 
       # - run: yarn ci:lint
