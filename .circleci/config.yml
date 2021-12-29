@@ -35,9 +35,12 @@ jobs:
 
       - run:
           name: set $TAG with current latest tag before applying versioning
+          command: echo 'export TAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
+
+      - run:
+          name: persist $TAG
           command: |
             mkdir tmp
-            echo 'export TAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
             echo $TAG
             echo $TAG >> tmp/current_tag
 
@@ -59,9 +62,9 @@ jobs:
             echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
             echo $TAG
 
-      - run: yarn ci:lint
+      # - run: yarn ci:lint
 
-      - run: yarn ci:test
+      # - run: yarn ci:test
 
       # - persist_to_workspace:
       #     root: ~/
