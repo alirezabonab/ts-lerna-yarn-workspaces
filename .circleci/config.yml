@@ -36,6 +36,7 @@ jobs:
       - run:
           name: set $TAG with current latest tag before applying versioning
           command: |
+            mkdir tmp
             echo 'export TAG=$(git describe --abbrev=0 --tags)' >> tmp/current_tag
             echo tmp/current_tag >> $BASH_ENV
 
