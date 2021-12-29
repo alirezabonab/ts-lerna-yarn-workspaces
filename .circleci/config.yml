@@ -38,7 +38,7 @@ jobs:
           command: |
             mkdir tmp
             echo 'export TAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
-            echo echo $TAG >> tmp/current_tag
+            echo $TAG >> tmp/current_tag
 
       - persist_to_workspace:
           root: ~/
