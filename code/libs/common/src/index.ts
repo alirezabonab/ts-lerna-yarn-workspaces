@@ -17,3 +17,7 @@ export function divide(a: number, b: number): number {
 export function print(value: string) {
   console.log(value);
 }
+
+export function log(value: string) {
+  console.log(value);
+}
