@@ -72,9 +72,13 @@ jobs:
       - run:
           name: print $XTAG
           command: echo $XTAG
+      - run: yarn ci:build
 
       - run: yarn ci:version
 
+      - run:
+          name: print $XTAG
+          command: echo $XTAG
       - run: yarn ci:build
 
       - persist_to_workspace:
