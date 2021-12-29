@@ -1,6 +1,6 @@
 {
   "name": "@foxmono/server",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": true,
   "scripts": {
     "dev:watch": "nodemon ./bin/www.js",
@@ -10,7 +10,7 @@
     "ci:deploy": "echo deploy--@foxmono/server"
   },
   "dependencies": {
-    "@foxmono/common": "^1.0.14",
+    "@foxmono/common": "^1.0.15",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
