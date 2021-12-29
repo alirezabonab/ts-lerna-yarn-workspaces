@@ -83,12 +83,9 @@ jobs:
       - run: git config --global user.name $GITHUB_USER
 
       - run:
-          name: set $TAG with current latest tag before applying versioning
-          command: echo 'export TAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
-
-      - run:
           name: print $TAG
           command: echo $TAG
+
       - run: yarn ci:build
 
       - run: yarn ci:version
@@ -96,6 +93,7 @@ jobs:
       - run:
           name: print $TAG
           command: echo $TAG
+
       - run: yarn ci:build
 
       - persist_to_workspace:
