@@ -1,4 +1,6 @@
 **/dist
 **/node_modules
 **/**.tsbuildinfo
-combined-package-lock.txt
+
+# CI/CD requirement for temprory files
+tmp
