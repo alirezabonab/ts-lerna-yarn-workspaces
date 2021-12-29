@@ -13,3 +13,7 @@ export function subtract(a: number, b: number): number {
 export function divide(a: number, b: number): number {
   return a / b;
 }
+
+export function print(value: string) {
+  console.log(value);
+}

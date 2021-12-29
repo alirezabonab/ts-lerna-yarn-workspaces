@@ -37,8 +37,8 @@ jobs:
           name: set $TAG with current latest tag before applying versioning
           command: |
             mkdir tmp
-            echo 'export TAG=$(git describe --abbrev=0 --tags)' >> tmp/current_tag
-            echo tmp/current_tag >> $BASH_ENV
+            echo 'export TAG=$(git describe --abbrev=0 --tags)' >> $BASH_ENV
+            echo echo $TAG >> tmp/current_tag
 
       - persist_to_workspace:
           root: ~/
@@ -53,7 +53,7 @@ jobs:
 
       - run:
           name: set $TAG with current latest tag before applying versioning
-          command: echo tmp/current_tag >> $BASH_ENV
+          command: echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
 
       - run:
           name: print $PATH
@@ -77,7 +77,7 @@ jobs:
 
       - run:
           name: set $TAG with current latest tag before applying versioning
-          command: echo tmp/current_tag >> $BASH_ENV
+          command: echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
 
       - run: git config --global user.email $GITHUB_EMAIL
       - run: git config --global user.name $GITHUB_USER
@@ -112,7 +112,7 @@ jobs:
 
       - run:
           name: set $TAG with current latest tag before applying versioning
-          command: echo tmp/current_tag >> $BASH_ENV
+          command: echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
 
       - run:
           name: print $TAG
