@@ -13,25 +13,25 @@ jobs:
 
       - run: git fetch --all --tags
 
-      # - restore_cache:
-      #     keys:
-      #       - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      #       - yarn-packages-v1-{{ .Branch }}-
-      #       - yarn-packages-v1-
+      - restore_cache:
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
 
-      # - run: yarn install --freeze-lockfile
+      - run: yarn install --freeze-lockfile
 
-      # - save_cache:
-      #     paths:
-      #       - ~/.yarn
-      #       - node_modules
-      #       - code/apps/admin-dashboard/node_modules
-      #       - code/apps/server/node_modules
-      #       - code/apps/client/node_modules
-      #       - code/libs/common/node_modules
-      #       - code/libs/react-components-library/node_modules
-      #       # *** add/remove item when a project is added or removed
-      #     key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - save_cache:
+          paths:
+            - ~/.yarn
+            - node_modules
+            - code/apps/admin-dashboard/node_modules
+            - code/apps/server/node_modules
+            - code/apps/client/node_modules
+            - code/libs/common/node_modules
+            - code/libs/react-components-library/node_modules
+            # *** add/remove item when a project is added or removed
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - run:
           name: set $TAG with current latest tag before applying versioning
@@ -56,74 +56,80 @@ jobs:
           at: ~/
 
       - run:
-          name: set $TAG with current latest tag before applying versioning
+          name: set $TAG from tmp/current_tag
           command: >-
             echo $(cat tmp/current_tag) &&
             echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV &&
             echo $TAG
 
-      # - run: yarn ci:lint
+      - run: yarn ci:lint
 
-      # - run: yarn ci:test
+      - run: yarn ci:test
 
-      # - persist_to_workspace:
-      #     root: ~/
-      #     paths:
-      #       - repo
-      #       - .ssh
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo
+            - .ssh
 
-  # build:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
 
-  #     - run:
-  #         name: set $TAG with current latest tag before applying versioning
-  #         command: echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
+      - run:
+          name: set $TAG from tmp/current_tag
+          command: >-
+            echo $(cat tmp/current_tag) &&
+            echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV &&
+            echo $TAG
 
-  #     - run: git config --global user.email $GITHUB_EMAIL
-  #     - run: git config --global user.name $GITHUB_USER
+      - run: git config --global user.email $GITHUB_EMAIL
+      - run: git config --global user.name $GITHUB_USER
 
-  #     - run:
-  #         name: print $TAG
-  #         command: echo $TAG
+      - run:
+          name: print $TAG
+          command: echo $TAG
 
-  #     - run: yarn ci:build
+      - run: yarn ci:build
 
-  #     - run: yarn ci:version
+      - run: yarn ci:version
 
-  #     - run:
-  #         name: print $TAG
-  #         command: echo $TAG
+      - run:
+          name: print $TAG
+          command: echo $TAG
 
-  #     - run: yarn ci:build
+      - run: yarn ci:build
 
-  #     - persist_to_workspace:
-  #         root: ~/
-  #         paths:
-  #           - repo
-  #           - .ssh
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo
+            - .ssh
 
-  # deploy:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
 
-  #     - run:
-  #         name: set $TAG with current latest tag before applying versioning
-  #         command: echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV
+      - run:
+          name: set $TAG from tmp/current_tag
+          command: >-
+            echo $(cat tmp/current_tag) &&
+            echo 'export TAG=$(cat tmp/current_tag)' >> $BASH_ENV &&
+            echo $TAG
 
-  #     - run:
-  #         name: print $TAG
-  #         command: echo $TAG
+      - run:
+          name: print $TAG
+          command: echo $TAG
 
-  #     - run:
-  #         name: Authenticate with registry
-  #         command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
 
-  #     - run: yarn ci:deploy
+      - run: yarn ci:deploy
 
 workflows:
   version: 2
@@ -133,12 +139,12 @@ workflows:
       - test:
           requires:
             - prepare
-      # - build:
-      #     requires:
-      #       - test
-      # - deploy:
-      #     filters:
-      #       branches:
-      #         only: master
-      #     requires:
-      #       - build
+      - build:
+          requires:
+            - test
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
