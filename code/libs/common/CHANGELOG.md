@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.16](https://github.com/alireza-bonab/ts-lerna-yarn-workspaces/compare/@foxmono/common@1.0.15...@foxmono/common@1.0.16) (2022-01-10)
+
+**Note:** Version bump only for package @foxmono/common
+
+
+
+
+
 ## [1.0.15](https://github.com/alireza-bonab/ts-lerna-yarn-workspaces/compare/@foxmono/common@1.0.14...@foxmono/common@1.0.15) (2021-12-29)
 
 **Note:** Version bump only for package @foxmono/common
